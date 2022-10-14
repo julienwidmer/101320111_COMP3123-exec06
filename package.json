@@ -4,7 +4,8 @@
   "description": "Week06 Exercise as note taking application",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\""
+    "test": "echo \"Error: no test specified\"",
+    "dev": "nodemon server.js"
   },
   "keywords": [
     "expressJS",
@@ -22,5 +23,8 @@
     "body-parser": "^1.18.3",
     "express": "^4.16.3",
     "mongoose": "^5.2.8"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
   }
 }
