@@ -71,7 +71,7 @@ routes.put('/notes/:noteId', async (req, res) => {
         const udatedNote = await NoteModel.findById(req.params.noteId);
 
         if (udatedNote) {
-            res.status(201).send(udatedNote);
+            res.status(204).send(udatedNote);
         } else {
             // Client side error
             res.status(400).send({message: `No note to update found with noteId: ${req.params.noteId}`});
@@ -91,7 +91,7 @@ routes.delete('/notes/:noteId', async (req, res) => {
         const note = await NoteModel.findByIdAndRemove(req.params.noteId);
 
         if (note) {
-            res.status(200).send(note);
+            res.status(200).send({message: `Removed note with given noteId: ${req.params.noteId}`});
         } else {
             // Client side error
             res.status(400).send({message: `No note to remove with noteId: ${req.params.noteId}`});
