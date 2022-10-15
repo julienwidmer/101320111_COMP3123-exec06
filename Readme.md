@@ -17,3 +17,7 @@ node server.js
 ```
 
 You can browse the apis at <http://localhost:8081>
+
+## Instruction
+
+Update mongoDB credentials inside `server.js` (line 16)
