@@ -1,15 +1,16 @@
 const express = require('express');
-const bodyParser = require('body-parser');
-const mongoose = require('mongoose');
+const notesRoutes = require("./routes/NoteRoutes");
 
-const DB_URL = "mongodb+srv://sa:s3cr3t@cluster0.qa3t4.mongodb.net/gbc-fall2020?retryWrites=true&w=majority"
 const app = express();
-app.use(bodyParser.urlencoded({ extended: true }))
-app.use(bodyParser.json())
+const bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
+const mongoose = require('mongoose');
+const DB_URL = "mongodb+srv://admin:<PASSWORD>@cluster0.adpukiy.mongodb.net/fullstackdev?retryWrites=true&w=majority";
 
 mongoose.Promise = global.Promise;
 
-// TODO - Update your mongoDB Atals Url here to Connect to the database
 mongoose.connect(DB_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true
@@ -20,11 +21,11 @@ mongoose.connect(DB_URL, {
     process.exit();
 });
 
+app.use("/api/v1/", notesRoutes);
 
 app.get('/', (req, res) => {
     res.send("<h1>Welcome to Note taking application - Week06 Exercise</h1>");
 });
-
 
 app.listen(8081, () => {
     console.log("Server is listening on port 8081");
