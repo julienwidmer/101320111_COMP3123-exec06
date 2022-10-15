@@ -71,7 +71,7 @@ routes.put('/notes/:noteId', async (req, res) => {
         const udatedNote = await NoteModel.findById(req.params.noteId);
 
         if (udatedNote) {
-            res.status(204).send(udatedNote);
+            res.status(200).send(udatedNote);
         } else {
             // Client side error
             res.status(400).send({message: `No note to update found with noteId: ${req.params.noteId}`});
